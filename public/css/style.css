@@ -22,3 +22,22 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.later::after {
+  content: '\a';
+  white-space: pre;
+}
+
+.comment-margin {
+  margin-right: 20px;
+}
+
+.clear {
+  clear: both;
+}
