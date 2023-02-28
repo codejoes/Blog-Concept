@@ -8,6 +8,10 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
+  "keywords": [
+    "example",
+    "heroku"
+    ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codejoes/Blog-Concept.git"
