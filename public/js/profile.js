@@ -37,6 +37,38 @@ const delButtonHandler = async (event) => {
   }
 };
 
+const updatePostHandler = async (event) => {
+  event.preventDefault();
+
+  console.log('1=====================================');
+
+  const updatedTitle = document.querySelector('#updated-title').value.trim();
+  const updatedText = document.querySelector('#updated-text').value.trim();
+
+  
+    if (event.target.hasAttribute('data-id')) {
+      const postId = event.target.getAttribute('data-id');
+
+      const response = await fetch (`/api/posts/:id`, {
+        where: {
+          id: postId,
+        },
+        method: 'PUT',
+        body: JSON.stringify({ title: `${updatedTitle}`, text: `${updatedText}` }),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+ 
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert('Failed to udpate post');
+      }
+    }
+  
+};
+
 document
   .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
@@ -44,3 +76,7 @@ document
 document
   .querySelector('.project-list')
   .addEventListener('click', delButtonHandler);
+
+document
+  .querySelector('.update-post-form')
+  .addEventListener('submit', updatePostHandler);
